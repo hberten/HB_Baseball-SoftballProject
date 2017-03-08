@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Application2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="crime_title_hint">Enter a title for the crime.</string>
+    <string name="player_first_name_hint">First Name of Player</string>
+    <string name="player_last_name_hint">Last Name of Player</string>
+    <string name="player_jersey_number_hint">Jersey Number</string>
+    <string name="player_position_pitcher">Pitcher</string>
+    <string name="player_position_catcher">Catcher</string>
+    <string name="player_position_infield">Infield</string>
+    <string name="player_position_outfield">Outfield</string>
+    <string name="symbol_pitcher">P</string>
+    <string name="symbol_catcher">C</string>
+    <string name="symbol_infield">I</string>
+    <string name="symbol_outfield">O</string>
+</resources>
