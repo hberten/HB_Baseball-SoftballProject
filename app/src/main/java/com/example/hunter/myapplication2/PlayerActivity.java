@@ -1,5 +1,6 @@
 package com.example.hunter.myapplication2;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +19,10 @@ public class PlayerActivity extends FragmentActivity {
 
         if (fragment == null) {
             fragment = new PlayerFragment();
-            fm.beginTransaction().add(R.id.fragment_container.fragment).commit());
+            fm.beginTransaction()
+                    .add(R.id.fragment_container, fragment)
+                    .commit();
         }
     }
+
 }

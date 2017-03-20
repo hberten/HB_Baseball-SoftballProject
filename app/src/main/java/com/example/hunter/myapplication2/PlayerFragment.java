@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,9 @@ public class PlayerFragment extends Fragment {
     CheckBox infieldCheckBox;
     CheckBox outfieldCheckBox;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String TAG = "PlayerActivity";
 
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener listener;
 
     public PlayerFragment() {
         // Required empty public constructor
@@ -116,6 +115,7 @@ public class PlayerFragment extends Fragment {
         pitcherCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                Log.d(TAG, "Pitcher set to " + isChecked);
                 player.setPitcher(isChecked);
             }
         });
@@ -123,6 +123,7 @@ public class PlayerFragment extends Fragment {
         catcherCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                Log.d(TAG, "Catcher set to " + isChecked);
                 player.setCatcher(isChecked);
             }
         });
@@ -130,6 +131,7 @@ public class PlayerFragment extends Fragment {
         infieldCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                Log.d(TAG, "Infield set to " + isChecked);
                 player.setInfield(isChecked);
             }
         });
@@ -137,6 +139,7 @@ public class PlayerFragment extends Fragment {
         outfieldCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                Log.d(TAG, "Outfield set to " + isChecked);
                 player.setOutfield(isChecked);
             }
         });
@@ -146,26 +149,26 @@ public class PlayerFragment extends Fragment {
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        if (listener != null) {
+            listener.onFragmentInteraction(uri);
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//            listener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     /**
