@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/last_name_textbox"
             android:layout_width="wrap_content"
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+
             <EditText
                 android:id="@+id/player_number_textbox"
                 android:layout_width="wrap_content"
@@ -40,10 +42,11 @@
                 android:hint="@string/player_jersey_number_hint" />
 
             <Button
+                android:id="@+id/date_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/app_name"/>
+                android:text="@string/app_name" />
 
         </LinearLayout>
 
@@ -52,62 +55,73 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+
             <CheckBox
+                android:id="@+id/player_pitcher_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="@string/player_position_pitcher"/>
+                android:layout_marginRight="16dp"
+                android:text="@string/player_position_pitcher" />
+
             <CheckBox
+                android:id="@+id/player_catcher_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="@string/player_position_catcher"/>
+                android:layout_marginRight="16dp"
+                android:text="@string/player_position_catcher" />
+
             <CheckBox
+                android:id="@+id/player_infield_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="@string/player_position_infield"/>
+                android:layout_marginRight="16dp"
+                android:text="@string/player_position_infield" />
+
             <CheckBox
+                android:id="@+id/player_outfield_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:text="@string/player_position_outfield"/>
+                android:layout_marginRight="16dp"
+                android:text="@string/player_position_outfield" />
         </LinearLayout>
 
     </LinearLayout>
 
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/crime_details_label"-->
-        <!--android:textColor="#00ff00"-->
-        <!--android:typeface="monospace"-->
-        <!--android:textSize="30sp" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/crime_details_label"-->
+    <!--android:textColor="#00ff00"-->
+    <!--android:typeface="monospace"-->
+    <!--android:textSize="30sp" />-->
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <!--<Button-->
-            <!--android:id="@+id/crime_date"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:layout_marginLeft="16dp"-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:padding="16dp"-->
-            <!--android:layout_weight="2" />-->
+        <!--android:id="@+id/crime_date"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:padding="16dp"-->
+        <!--android:layout_weight="2" />-->
 
         <!--<CheckBox-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="16dp"-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:text="@string/crime_solved_label"-->
-            <!--android:layout_weight="1" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:text="@string/crime_solved_label"-->
+        <!--android:layout_weight="1" />-->
     </LinearLayout>
-
 
 </LinearLayout>

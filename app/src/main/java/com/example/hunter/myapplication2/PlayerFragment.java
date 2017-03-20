@@ -9,7 +9,14 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -21,8 +28,17 @@ import android.widget.EditText;
  * create an instance of this fragment.
  */
 public class PlayerFragment extends Fragment {
-    private Crime crime;
-    private EditText titleField;
+    private Player player;
+
+    private Button dateButton;
+
+    private EditText lastNameField;
+    private EditText firstNameField;
+
+    CheckBox pitcherCheckBox;
+    CheckBox catcherCheckBox;
+    CheckBox infieldCheckBox;
+    CheckBox outfieldCheckBox;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -55,25 +71,73 @@ public class PlayerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        crime = new Crime();
+        player = new Player();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_player,container,false);
-        titleField = (EditText) v.findViewById(R.id.crime_title);
-        titleField.addTextChangedListener(new TextWatcher() {
+        lastNameField = (EditText) v.findViewById(R.id.last_name_textbox);
+        lastNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                crime.setTitle(s.toString());
+                player.setLastName(s.toString());
             }
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+        firstNameField = (EditText) v.findViewById(R.id.first_name_textbox);
+        firstNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                player.setFirstName(s.toString());
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        dateButton = (Button) v.findViewById(R.id.date_button);
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        dateButton.setText(dateFormat.format(new Date()));
+        dateButton.setEnabled(false);
+
+        pitcherCheckBox = (CheckBox) v.findViewById(R.id.player_pitcher_checkbox);
+        pitcherCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                player.setPitcher(isChecked);
+            }
+        });
+        catcherCheckBox = (CheckBox) v.findViewById(R.id.player_catcher_checkbox);
+        catcherCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                player.setCatcher(isChecked);
+            }
+        });
+        infieldCheckBox = (CheckBox) v.findViewById(R.id.player_infield_checkbox);
+        infieldCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                player.setInfield(isChecked);
+            }
+        });
+        outfieldCheckBox = (CheckBox) v.findViewById(R.id.player_outfield_checkbox);
+        outfieldCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttownView, boolean isChecked) {
+                player.setOutfield(isChecked);
             }
         });
 
