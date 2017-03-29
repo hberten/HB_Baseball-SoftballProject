@@ -18,10 +18,10 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
         setContentView(R.layout.activity_fragment);
 
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment =fm.findFragmentById(R.id.fragment_container);
+        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null) {
-            fragment = new PlayerFragment();
+            fragment = new PlayerListFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();

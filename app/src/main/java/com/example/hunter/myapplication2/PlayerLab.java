@@ -20,9 +20,10 @@ public class PlayerLab {
         players = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             Player player = new Player();
-            player.setLastName("Jacobs");
+            player.setLastName("Jacobs " + i + (char) (0x2600 + (int) (Math.random()*255)));
             Log.d(TAG, player.getLastName());
             player.setPitcher(i%2==0);
+            players.add(player);
         }
     }
     public static PlayerLab get(Context context) {

@@ -1,5 +1,6 @@
 package com.example.hunter.myapplication2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,7 +18,6 @@ import java.util.List;
  */
 
 public class PlayerListFragment extends Fragment {
-
     private RecyclerView playerRecyclerView;
     private PlayerAdapter adapter;
 
@@ -30,7 +31,7 @@ public class PlayerListFragment extends Fragment {
         @Override
         public PlayerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+            View view = layoutInflater.inflate(R.layout.list_item_player, parent, false);
             return new PlayerHolder(view);
         }
 
@@ -64,12 +65,25 @@ public class PlayerListFragment extends Fragment {
         playerRecyclerView.setAdapter(adapter);
     }
 
-    private class PlayerHolder extends RecyclerView.ViewHolder {
-        public TextView lastNameTextView;
+    private class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private Player player;
+        private TextView lastNameTextView;
 
         public PlayerHolder(View itemView) {
             super(itemView);
-            lastNameTextView = (TextView) itemView;
+            itemView.setOnClickListener(this);
+            lastNameTextView = (TextView) itemView.findViewById(R.id.list_item_player_textView);
+        }
+
+        public void bindPlayer(Player player) {
+            this.player = player;
+            lastNameTextView.setText(player.getLastName());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = PlayerActivity.newIntent(getActivity(), player.getId());
+            startActivity(intent);
         }
     }
 }
