@@ -12,6 +12,7 @@ import android.util.Log;
 import java.util.UUID;
 
 public class PlayerActivity extends SingleFragmentActivity {
+
     final static String TAG = "PlayerActivity";
     public static final String EXTRA_PLAYER_ID = "com.example.hunter.myapplication2";
 
@@ -23,6 +24,17 @@ public class PlayerActivity extends SingleFragmentActivity {
     public static String getExtraPlayerId() {
         return EXTRA_PLAYER_ID;
     }
+
+
+    @Override
+    protected Fragment createFragment() {
+        UUID playerId = (UUID) getIntent().getSerializableExtra(EXTRA_PLAYER_ID);
+        //return new PlayerFragment();
+        return PlayerFragment.newInstance(playerId);
+    }
+//    protected Fragment startActivity() {
+//        Log.d(TAG, "startActivity");
+//    }
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +53,5 @@ public class PlayerActivity extends SingleFragmentActivity {
 //        }
 //    }
 
-    @Override
-    protected Fragment createFragment() {
-        return new PlayerFragment();
-    }
-//    protected Fragment startActivity() {
-//        Log.d(TAG, "startActivity");
-//    }
+
 }
