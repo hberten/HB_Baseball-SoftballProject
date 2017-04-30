@@ -43,6 +43,7 @@ public class PlayerFragment extends Fragment {
     CheckBox outfieldCheckBox;
 
     private static final String TAG = "PlayerActivity";
+    private static final String ARG_PLAYER_ID = "player_id";
 
     private OnFragmentInteractionListener listener;
 
@@ -51,10 +52,10 @@ public class PlayerFragment extends Fragment {
     }
 
     public static PlayerFragment newInstance(UUID playerID) {
-        PlayerFragment fragment = new PlayerFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        args.putSerializable(ARG_PLAYER_ID, playerID);
+
+        PlayerFragment fragment = new PlayerFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,6 +63,7 @@ public class PlayerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UUID playerId = (UUID) getArguments().getSerializable(ARG_PLAYER_ID);
         player = new Player();
     }
 

@@ -22,33 +22,6 @@ public class PlayerListFragment extends Fragment {
     private RecyclerView playerRecyclerView;
     private PlayerAdapter adapter;
 
-    private class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
-        private List<Player> players;
-
-        public PlayerAdapter(List<Player> players) {
-            this.players = players;
-        }
-
-        @Override
-        public PlayerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_item_player, parent, false);
-            return new PlayerHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(PlayerHolder holder, int position) {
-            Player player = players.get(position);
-            //holder.lastNameTextView.setText(player.getLastName());
-            holder.bindPlayer(player);
-        }
-
-        @Override
-        public int getItemCount() {
-            return players.size();
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.fragment_player_list, container, false);
@@ -67,7 +40,7 @@ public class PlayerListFragment extends Fragment {
         playerRecyclerView.setAdapter(adapter);
     }
 
-    private class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class PlayerHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Player player;
         private TextView lastNameTextView;
         private CheckBox pitcherCheckBox;
@@ -76,7 +49,7 @@ public class PlayerListFragment extends Fragment {
         public PlayerHolder(View itemView) {
             super(itemView);
 
-            //itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
             lastNameTextView = (TextView) itemView.findViewById(R.id.list_item_player_textView);
             pitcherCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_player_pitcher_checkBox);
             dateTextView = (TextView) itemView.findViewById(R.id.list_item_date_textView);
@@ -91,8 +64,36 @@ public class PlayerListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+            //Toast.makeText(getActivity(), player.getLastName(), Toast.LENGTH_SHORT).show();
             Intent intent = PlayerActivity.newIntent(getActivity(), player.getId());
+//            Intent intent = new Intent(getActivity(), PlayerActivity.class);
             startActivity(intent);
+        }
+    }
+
+    private class PlayerAdapter extends RecyclerView.Adapter<PlayerHolder> {
+        private List<Player> players;
+
+        public PlayerAdapter(List<Player> players) {
+            this.players = players;
+        }
+
+        @Override
+        public PlayerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            View view = layoutInflater.inflate(R.layout.list_item_player, parent, false);
+            return new PlayerHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(PlayerHolder holder, int position) {
+            Player player = players.get(position);
+            holder.bindPlayer(player);
+        }
+
+        @Override
+        public int getItemCount() {
+            return players.size();
         }
     }
 }
