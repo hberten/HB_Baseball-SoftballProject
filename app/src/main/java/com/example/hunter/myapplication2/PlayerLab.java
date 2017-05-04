@@ -18,14 +18,18 @@ public class PlayerLab {
     private static PlayerLab playerLab;
     private PlayerLab(Context context) {
         players = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            Player player = new Player();
-            player.setLastName("Jacobs " + i + (char) (0x2600 + (int) (Math.random()*255)));
-            Log.d(TAG, player.getLastName());
-            player.setPitcher(i%2==0);
-            players.add(player);
-        }
+//        for (int i = 0; i < 100; i++) {
+//            Player player = new Player();
+//            player.setLastName("Jacobs " + i + (char) (0x2600 + (int) (Math.random()*255)));
+//            Log.d(TAG, player.getLastName());
+//            player.setPitcher(i%2==0);
+//            players.add(player);
+//        }
     }
+    public void addPlayer(Player p) {
+        players.add(p);
+    }
+
     public static PlayerLab get(Context context) {
         if (playerLab == null)
             playerLab = new PlayerLab(context);

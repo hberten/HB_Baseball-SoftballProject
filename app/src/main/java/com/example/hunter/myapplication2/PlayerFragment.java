@@ -64,7 +64,7 @@ public class PlayerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UUID playerId = (UUID) getArguments().getSerializable(ARG_PLAYER_ID);
-        player = new Player();
+        player = PlayerLab.get(getActivity()).getPlayer(playerId);
     }
 
     @Override

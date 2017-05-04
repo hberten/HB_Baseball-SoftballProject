@@ -14,7 +14,7 @@ import java.util.UUID;
 public class PlayerActivity extends SingleFragmentActivity {
 
     final static String TAG = "PlayerActivity";
-    public static final String EXTRA_PLAYER_ID = "com.example.hunter.myapplication2";
+    private static final String EXTRA_PLAYER_ID = "com.example.hunter.myapplication2.player_id";
 
     public static Intent newIntent(Context packageContext, UUID playerId) {
         Intent intent = new Intent(packageContext, PlayerActivity.class);

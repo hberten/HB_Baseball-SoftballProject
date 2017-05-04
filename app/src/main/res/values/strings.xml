@@ -14,4 +14,8 @@
     <string name="symbol_catcher">C</string>
     <string name="symbol_infield">I</string>
     <string name="symbol_outfield">O</string>
+    <string name="new_crime">New Crime</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle_format">%1$s crimes</string>
 </resources>
